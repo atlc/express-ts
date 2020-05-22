@@ -10,14 +10,14 @@ let app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use((req, res, next) => {
-//     console.log(req.url);
-//     next();
-// });
-
 // app.get('/', (req, res, next) => {
 //     res.send('Hello from the web server side!');
 // });
+
+app.use((req, res, next) => {
+    console.log(req.url);
+    next();
+});
 
 app.post('/signup', (req, res) => {
     let newRegistrant: { email: string, password: string, donated1000: boolean, donated2500: boolean, checkboxAgree: boolean } = {
